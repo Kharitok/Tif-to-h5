@@ -29,7 +29,7 @@ where path_to_folder_or_file can be path to folder containing files or certain f
 # pip install  numpy --upgrade
 
 
-
+import argparse
 import h5py
 from tifffile import imread
 import re
@@ -280,6 +280,30 @@ def conv(path):
 
 
 if __name__ == "__main__":
-    print(sys.argv[1])
+
+
+
+    parser = argparse.ArgumentParser(description='Convert tiff32 to h5 and add metainformation from corresponding txt',
+                                    #usage='Any text you want\n',
+                                    formatter_class = argparse.RawTextHelpFormatter,
+                                    epilog=""".tif32 and .txt should have corresponding and statdard format names:
+
+    av{averaging number}_seq{sequence number}_{aperture sizze}_-{id}.tif32
+and
+    av{averaging number}_seq{sequence number}Anytext.txt
+
+for example:
+    av100_seq7_5mm_-2299.tif32
+    av100_seq7_Aberrations.txt
+""")
+
+    parser.add_argument('Path', metavar='Path', type=str,help='Path to folder or file to  be converted')
+    args = parser.parse_args()    
+    print(args.Path)
 
     conv(sys.argv[1])
+
+
+
+
+
