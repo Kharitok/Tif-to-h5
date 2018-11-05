@@ -299,11 +299,4 @@ for example:
 
     parser.add_argument('Path', metavar='Path', type=str,help='Path to folder or file to  be converted')
     args = parser.parse_args()    
-    print(args.Path)
-
-    conv(sys.argv[1])
-
-
-
-
-
+    conv(args.Path)
