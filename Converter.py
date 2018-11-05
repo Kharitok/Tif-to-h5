@@ -1,17 +1,40 @@
-# pip install  numpy - -update
+"""
+
+Convert  .tif32 files to .h5.
+Can add adittional atributes from .txt files.
+
+.tif32 and .txt should have corresponding and statdard format names :
+
+av{averaging number}_seq{sequence number}_{aperture sizze}_-{id}.tif32
+
+and 
+
+av{averaging number}_seq{sequence number}Anytext.txt
 
 
-#from matplotlib.colors import LogNorm
+for example:
+
+av100_seq7_5mm_-2299.tif32
+av100_seq7_Aberrations.txt
+
+to use script 
+
+type Python Converter.py path_to_folder_or_file
+
+where path_to_folder_or_file can be path to folder containing files or certain file especially
+"""
+
+
+
+# pip install  numpy --upgrade
+
+
+
 import h5py
 from tifffile import imread
 import re
 import os
 import sys
-#im = imread('av100_seq5_8p8mm_-2299.tif32')
-
-
-def tiffread(file_):
-    return imread('av100_seq5_8p8mm_-2299.tif32')
 
 
 class Data_description():
